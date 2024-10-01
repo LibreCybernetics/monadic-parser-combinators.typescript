@@ -27,6 +27,7 @@
 
   packages = with pkgs; [
     assemblyscript
+    pre-commit
   ];
 
   pre-commit.hooks = {
@@ -44,6 +45,12 @@
       args = [ "--noEmit" ];
       pass_filenames = false;
       files = "\\.ts$";
+    };
+  };
+
+  tasks = {
+    "bun:install" = {
+      exec = "bun install";
     };
   };
 
