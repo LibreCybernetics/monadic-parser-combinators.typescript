@@ -30,7 +30,11 @@
   ];
 
   pre-commit.hooks = {
-    eslint.enable = true;
+    eslint = {
+      enable = true;
+
+      files = "\\.[jt]s$";
+    };
     nixfmt-rfc-style.enable = true;
     prettier.enable = true;
     shellcheck.enable = true;
