@@ -20,5 +20,9 @@ jobs:
           devenv tasks run bun:install
           devenv tasks run devenv:pre-commit:install
           devenv tasks run devenv:pre-commit:run
-      - name: Devenv  test
+      - name: Devenv test
         run: devenv test
+      - name: Stryker Mutation Testing
+        shell: devenv shell bash -- -e {0}
+        run: |
+          bun x stryker run
