@@ -1,0 +1,15 @@
+# AssemblyScript
+build
+
+# Devenv
+.devenv*
+devenv.local.nix
+
+# direnv
+.direnv
+
+# JetBrains
+.idea
+
+# pre-commit
+.pre-commit-config.yaml
