@@ -43,10 +43,6 @@ describe("MatchParser Unit", () => {
   });
 });
 
-const matchParserArbitrary: Arbitrary<MatchParser> = string()
-  .filter((s) => s.length > 0)
-  .map(MatchParser.new);
-
 describe("MatchParser Property", () => {
   it("should always succeed for matching prefixes", () => {
     assert(

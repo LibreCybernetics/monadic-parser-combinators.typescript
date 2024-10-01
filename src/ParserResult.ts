@@ -23,9 +23,10 @@ export class MatchFailure extends Failure<void> {
   }
 }
 
-class CondFailure<t> extends Failure<t> {
+export class CondFailure<t> extends Failure<t> {
   constructor(
-    cond: string,
+    readonly cond: string,
+    readonly actual: string,
     readonly pos: Pos,
   ) {
     super();
