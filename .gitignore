@@ -11,5 +11,10 @@ devenv.local.nix
 # JetBrains
 .idea
 
+# JS / TS
+bun.lockb
+deno.lock
+node_modules
+
 # pre-commit
 .pre-commit-config.yaml

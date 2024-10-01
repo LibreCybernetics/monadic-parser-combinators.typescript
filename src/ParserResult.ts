@@ -15,8 +15,8 @@ export class EndOfFileFailure<t> extends Failure<t> {}
 
 export class MatchFailure extends Failure<void> {
   constructor(
-    expected: string,
-    actual: string,
+    readonly expected: string,
+    readonly actual: string,
     readonly pos: Pos,
   ) {
     super();

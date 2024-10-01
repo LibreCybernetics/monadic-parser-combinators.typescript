@@ -1,10 +1,10 @@
-import { Parser } from "../Parser";
+import { Parser } from "../Parser.ts";
 import {
   EndOfFileFailure,
   MatchFailure,
   ParserResult,
   Success,
-} from "../ParserResult";
+} from "../ParserResult.ts";
 
 export class MatchParser extends Parser<void> {
   private constructor(readonly string: string) {
@@ -14,7 +14,7 @@ export class MatchParser extends Parser<void> {
     }
   }
 
-  static new(string: string): Parser<void> {
+  static new(string: string): MatchParser {
     return new MatchParser(string);
   }
 
@@ -25,7 +25,7 @@ export class MatchParser extends Parser<void> {
       return new EndOfFileFailure();
     } else {
       // Grab at list 3 chars from the input for diagnostics
-      const sliced = input.slice(0, Math.min(this.string.length, 3));
+      const sliced = input.slice(0, Math.max(this.string.length, 3));
       return new MatchFailure(this.string, sliced, 0);
     }
   }

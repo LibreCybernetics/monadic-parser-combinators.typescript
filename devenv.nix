@@ -38,5 +38,16 @@
     nixfmt-rfc-style.enable = true;
     prettier.enable = true;
     shellcheck.enable = true;
+    tsc = {
+      enable = true;
+      entry = "tsc";
+      args = [ "--noEmit" ];
+      pass_filenames = false;
+      files = "\\.ts$";
+    };
   };
+
+  enterTest = ''
+    bun test
+  '';
 }

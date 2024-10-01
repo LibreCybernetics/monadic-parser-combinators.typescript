@@ -1,10 +1,8 @@
-import { Parser0 } from "./Parser0";
-import { MatchParser } from "./combinators/MatchParser";
+import { Parser0 } from "./Parser0.ts";
+import { MatchParser } from "./combinators/MatchParser.ts";
 
 export abstract class Parser<t> extends Parser0<t> {}
 
-export namespace Parser {
-  export function string(string: string): Parser<void> {
-    return MatchParser.new(string);
-  }
+export function stringParser(string: string): Parser<void> {
+  return MatchParser.new(string);
 }
