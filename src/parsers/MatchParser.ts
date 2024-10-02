@@ -1,10 +1,10 @@
-import { Parser } from "../Parser.ts";
+import { Parser } from "./Parser.ts";
 import {
   EndOfFileFailure,
   MatchFailure,
   ParserResult,
   Success,
-} from "../ParserResult.ts";
+} from "./ParserResult.ts";
 
 export class MatchParser extends Parser<void> {
   private constructor(readonly string: string) {

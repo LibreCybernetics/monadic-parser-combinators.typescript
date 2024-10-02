@@ -1,10 +1,10 @@
-import { Parser } from "../Parser.ts";
+import { Parser } from "./Parser.ts";
 import {
   CondFailure,
   EndOfFileFailure,
   ParserResult,
   Success,
-} from "../ParserResult.ts";
+} from "./ParserResult.ts";
 
 export class CondCharParser extends Parser<string> {
   private constructor(readonly cond: (input: string) => boolean) {

@@ -1,12 +1,12 @@
 import { describe, it, expect } from "@jest/globals";
 import { assert, property, string } from "fast-check";
 
-import { CondCharParser } from "../../src/combinators/CondCharParser.ts";
+import { CondCharParser } from "../../src/parsers/CondCharParser.ts";
 import {
   Success,
   EndOfFileFailure,
   CondFailure,
-} from "../../src/ParserResult.ts";
+} from "../../src/parsers/ParserResult.ts";
 
 describe("CondCharParser Unit", () => {
   it("should successfully parse matching input", () => {

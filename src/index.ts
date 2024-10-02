@@ -1,3 +1,3 @@
-export { Parser0 } from "./Parser0";
-export { Parser } from "./Parser";
-export { ParserResult } from "./ParserResult";
+export { Parser0 } from "./parsers/Parser0.ts";
+export { Parser } from "./parsers/Parser.ts";
+export { ParserResult } from "./parsers/ParserResult.ts";

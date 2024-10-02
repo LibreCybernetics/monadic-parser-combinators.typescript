@@ -1,12 +1,12 @@
 import { describe, it, expect } from "@jest/globals";
 import { Arbitrary, assert, pre, property, string } from "fast-check";
 
-import { MatchParser } from "../../src/combinators/MatchParser.ts";
+import { MatchParser } from "../../src/parsers/MatchParser.ts";
 import {
   Success,
   EndOfFileFailure,
   MatchFailure,
-} from "../../src/ParserResult.ts";
+} from "../../src/parsers/ParserResult.ts";
 
 describe("MatchParser Unit", () => {
   it("should successfully parse matching input", () => {
