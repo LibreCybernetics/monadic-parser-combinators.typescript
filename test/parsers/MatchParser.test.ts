@@ -8,33 +8,18 @@ import {
   MatchFailure,
 } from "../../src/parsers/ParserResult.ts";
 
+import { testParserSuccess, testParserFailure } from "./TestHelpers.ts";
+
 describe("MatchParser Unit", () => {
-  it("should successfully parse matching input", () => {
-    const parser = MatchParser.new("test");
-    const result = parser.parse("test input");
-    expect(result).toBeInstanceOf(Success);
-    if (result instanceof Success) {
-      expect(result.value).toBeUndefined();
-      expect(result.pos).toBe(4);
-    }
-  });
+  testParserSuccess(MatchParser.new("test"), "test input", undefined, 4);
 
-  it("should fail with EndOfFileFailure on empty input", () => {
-    const parser = MatchParser.new("test");
-    const result = parser.parse("");
-    expect(result).toBeInstanceOf(EndOfFileFailure);
-  });
+  testParserFailure(MatchParser.new("test"), "", new EndOfFileFailure());
 
-  it("should fail with MatchFailure on non-matching input", () => {
-    const parser = MatchParser.new("test");
-    const result = parser.parse("fail input");
-    expect(result).toBeInstanceOf(MatchFailure);
-    if (result instanceof MatchFailure) {
-      expect(result.expected).toBe("test");
-      expect(result.actual).toBe("fail");
-      expect(result.pos).toBe(0);
-    }
-  });
+  testParserFailure(
+    MatchParser.new("test"),
+    "fail input",
+    new MatchFailure("test", "fail", 0),
+  );
 
   it("should fail to construct with empty string", () => {
     expect(() => MatchParser.new("")).toThrowError(

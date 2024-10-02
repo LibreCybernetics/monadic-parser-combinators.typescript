@@ -8,32 +8,27 @@ import {
   CondFailure,
 } from "../../src/parsers/ParserResult.ts";
 
-describe("CondCharParser Unit", () => {
-  it("should successfully parse matching input", () => {
-    const parser = CondCharParser.new((input) => input === "a");
-    const result = parser.parse("a");
-    expect(result).toBeInstanceOf(Success);
-    if (result instanceof Success) {
-      expect(result.value).toBe("a");
-      expect(result.pos).toBe(1);
-    }
-  });
+import { testParserSuccess, testParserFailure } from "./TestHelpers.ts";
 
-  it("should fail with EndOfFileFailure on empty input", () => {
-    const parser = CondCharParser.new((input) => input === "a");
-    const result = parser.parse("");
-    expect(result).toBeInstanceOf(EndOfFileFailure);
-  });
-  it("should fail with CondFailure on non-matching input", () => {
-    const parser = CondCharParser.new((input) => input === "a");
-    const result = parser.parse("b");
-    expect(result).toBeInstanceOf(CondFailure);
-    if (result instanceof CondFailure) {
-      expect(result.cond).toBe('(input) => input === "a"');
-      expect(result.actual).toBe("b");
-      expect(result.pos).toBe(1);
-    }
-  });
+describe("CondCharParser Unit", () => {
+  testParserSuccess(
+    CondCharParser.new((input) => input === "a"),
+    "a",
+    "a",
+    1,
+  );
+
+  testParserFailure(
+    CondCharParser.new((input) => input === "a"),
+    "",
+    new EndOfFileFailure(),
+  );
+
+  testParserFailure(
+    CondCharParser.new((input) => input === "a"),
+    "b",
+    new CondFailure<string>('(input) => input === "a"', "b", 1),
+  );
 });
 
 describe("CondCharParser Property", () => {

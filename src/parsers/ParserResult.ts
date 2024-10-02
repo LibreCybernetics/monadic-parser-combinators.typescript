@@ -9,7 +9,7 @@ export class Success<t> implements ParserResult<t> {
   ) {}
 }
 
-abstract class Failure<t> implements ParserResult<t> {}
+export abstract class Failure<t> implements ParserResult<t> {}
 
 export class EndOfFileFailure<t> extends Failure<t> {}
 
