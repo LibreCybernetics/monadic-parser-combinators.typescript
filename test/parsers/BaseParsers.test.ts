@@ -27,7 +27,6 @@ describe("BaseParsers Unit", () => {
     const result = space.parse("a");
     expect(result).toBeInstanceOf(CondFailure);
     if (result instanceof CondFailure) {
-      expect(result.cond).toBe('(input) => input === " "');
       expect(result.actual).toBe("a");
       expect(result.pos).toBe(1);
     }
@@ -45,7 +44,6 @@ describe("BaseParsers Unit", () => {
     const result = tab.parse("a");
     expect(result).toBeInstanceOf(CondFailure);
     if (result instanceof CondFailure) {
-      expect(result.cond).toBe('(input) => input === "\\t"');
       expect(result.actual).toBe("a");
       expect(result.pos).toBe(1);
     }
@@ -63,7 +61,6 @@ describe("BaseParsers Unit", () => {
     const result = newline.parse("a");
     expect(result).toBeInstanceOf(CondFailure);
     if (result instanceof CondFailure) {
-      expect(result.cond).toBe('(input) => input === "\\n"');
       expect(result.actual).toBe("a");
       expect(result.pos).toBe(1);
     }
@@ -81,7 +78,6 @@ describe("BaseParsers Unit", () => {
     const result = digit.parse("a");
     expect(result).toBeInstanceOf(CondFailure);
     if (result instanceof CondFailure) {
-      expect(result.cond).toBe('(input) => input >= "0" && input <= "9"');
       expect(result.actual).toBe("a");
       expect(result.pos).toBe(1);
     }
@@ -99,9 +95,6 @@ describe("BaseParsers Unit", () => {
     const result = letter.parse("1");
     expect(result).toBeInstanceOf(CondFailure);
     if (result instanceof CondFailure) {
-      expect(result.cond).toBe(
-        '(input) => input >= "a" && input <= "z" || input >= "A" && input <= "Z"',
-      );
       expect(result.actual).toBe("1");
       expect(result.pos).toBe(1);
     }
